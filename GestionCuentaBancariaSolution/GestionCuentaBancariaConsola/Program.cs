@@ -106,4 +106,32 @@ while (!exit)
             Console.WriteLine("Choose an option between 1 and 7");
             break;
     }
+
+    if (option == 1 || option == 2)
+    {
+        string anotherOperation;
+
+        while (true)
+        {
+            Console.WriteLine("Would you like to perform another operation? (Y/N)");
+            anotherOperation = Console.ReadLine();
+
+            if (anotherOperation.Equals("Y", StringComparison.OrdinalIgnoreCase) ||
+                anotherOperation.Equals("Yes", StringComparison.OrdinalIgnoreCase))
+            {
+                break;
+            }
+            else if (anotherOperation.Equals("N", StringComparison.OrdinalIgnoreCase) ||
+                     anotherOperation.Equals("No", StringComparison.OrdinalIgnoreCase))
+            {
+                Console.WriteLine("The current balance is: " + balance + " €");
+                exit = true;
+                break;
+            }
+            else
+            {
+                Console.WriteLine("Please write Y or N");
+            }
+        }
+    }
 }
