@@ -3,6 +3,8 @@ bool exit = false;
 decimal balance = 10;
 bool isNumber;
 
+List<string> movements = new List<string>();
+
 while (!exit)
 {
     Console.WriteLine("-----------------------------------");
@@ -40,6 +42,7 @@ while (!exit)
                     {
                         Console.WriteLine("You have successfully entered: " + numberIncome);
                         balance += numberIncome;
+                        movements.Add($"Income: {numberIncome} €");
                         Console.WriteLine("The current balance is: " + balance + " €");
                     }
                 }
@@ -71,6 +74,7 @@ while (!exit)
                         {
                             Console.WriteLine("You have requested to withdraw the amount of: " + numberOutcome);
                             balance -= numberOutcome;
+                            movements.Add($"Outcome: {numberOutcome} €");
                             Console.WriteLine("The withdrawal has been completed successfully. The current balance is: " + balance + " €");
                         }
                         else
@@ -87,7 +91,19 @@ while (!exit)
             break;
 
         case 3:
-            Console.WriteLine("You have chosen option 3");
+            Console.WriteLine("----------------------------------------------------");
+            Console.WriteLine("List of all movements:");
+            if (movements.Count > 0)
+            {
+                foreach (var movement in movements)
+                {
+                    Console.WriteLine(movement);
+                }
+            }
+            else
+            {
+                Console.WriteLine("No movements have been recorded yet.");
+            }
             break;
         case 4:
             Console.WriteLine("You have chosen option 4");
