@@ -4,6 +4,7 @@ decimal balance = 10;
 bool isNumber;
 
 List<string> movements = new List<string>();
+List<string> incomes = new List<string>();
 
 while (!exit)
 {
@@ -43,6 +44,7 @@ while (!exit)
                         Console.WriteLine("You have successfully entered: " + numberIncome);
                         balance += numberIncome;
                         movements.Add($"Income: {numberIncome} €");
+                        incomes.Add($"Income: {numberIncome} €");
                         Console.WriteLine("The current balance is: " + balance + " €");
                     }
                 }
@@ -106,7 +108,19 @@ while (!exit)
             }
             break;
         case 4:
-            Console.WriteLine("You have chosen option 4");
+            Console.WriteLine("----------------------------------------------------");
+            Console.WriteLine("List of incomes:");
+            if (incomes.Count > 0)
+            {
+                foreach (var incomeMovement in incomes)
+                {
+                    Console.WriteLine(incomeMovement);
+                }
+            }
+            else
+            {
+                Console.WriteLine("No incomes have been recorded yet.");
+            }
             break;
         case 5:
             Console.WriteLine("You have chosen option 5");
