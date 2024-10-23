@@ -5,6 +5,7 @@ bool isNumber;
 
 List<string> movements = new List<string>();
 List<string> incomes = new List<string>();
+List<string> outcomes = new List<string>();
 
 while (!exit)
 {
@@ -77,6 +78,7 @@ while (!exit)
                             Console.WriteLine("You have requested to withdraw the amount of: " + numberOutcome);
                             balance -= numberOutcome;
                             movements.Add($"Outcome: {numberOutcome} €");
+                            outcomes.Add($"Outcome: {numberOutcome} €");
                             Console.WriteLine("The withdrawal has been completed successfully. The current balance is: " + balance + " €");
                         }
                         else
@@ -123,7 +125,19 @@ while (!exit)
             }
             break;
         case 5:
-            Console.WriteLine("You have chosen option 5");
+            Console.WriteLine("----------------------------------------------------");
+            Console.WriteLine("List of outcomes:");
+            if (outcomes.Count > 0)
+            {
+                foreach (var outcomeMovement in outcomes)
+                {
+                    Console.WriteLine(outcomeMovement);
+                }
+            }
+            else
+            {
+                Console.WriteLine("No outcomes have been recorded yet.");
+            }
             break;
         case 6:
             Console.WriteLine("You have chosen option 6");
