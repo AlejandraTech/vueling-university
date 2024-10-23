@@ -40,7 +40,7 @@ while (!exit)
                     {
                         Console.WriteLine("You have successfully entered: " + numberIncome);
                         balance += numberIncome;
-                        Console.WriteLine("The current balance is: " + balance);
+                        Console.WriteLine("The current balance is: " + balance + " €");
                     }
                 }
                 else
@@ -51,8 +51,41 @@ while (!exit)
 
             break;
         case 2:
-            Console.WriteLine("You have chosen option 2");
+            decimal numberOutcome;
+            do
+            {
+                Console.WriteLine("----------------------------------------------------");
+                Console.WriteLine("Money withdrawal - Please enter an amount to withdraw:");
+                String outcome = Console.ReadLine();
+                isNumber = decimal.TryParse(outcome, out numberOutcome);
+
+                if (isNumber)
+                {
+                    if (numberOutcome <= 0)
+                    {
+                        Console.WriteLine("Error! The value to withdraw must be a positive number and cannot be 0.");
+                    }
+                    else
+                    {
+                        if (numberOutcome <= balance)
+                        {
+                            Console.WriteLine("You have requested to withdraw the amount of: " + numberOutcome);
+                            balance -= numberOutcome;
+                            Console.WriteLine("The withdrawal has been completed successfully. The current balance is: " + balance + " €");
+                        }
+                        else
+                        {
+                            Console.WriteLine("Error! You cannot withdraw an amount greater than your current balance from: " + balance + ".");
+                        }
+                    }
+                }
+                else
+                {
+                    Console.WriteLine("¡Error! Por favor, introduce un valor numérico válido para el retiro.");
+                }
+            } while (!isNumber || numberOutcome <= 0);
             break;
+
         case 3:
             Console.WriteLine("You have chosen option 3");
             break;
