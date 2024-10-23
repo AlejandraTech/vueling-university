@@ -3,9 +3,33 @@ bool exit = false;
 decimal balance = 10;
 bool isNumber;
 
+string storedAccountNumber = "123456789";
+string storedPin = "1234";
+
 List<string> movements = new List<string>();
 List<string> incomes = new List<string>();
 List<string> outcomes = new List<string>();
+
+bool authenticated = false;
+while (!authenticated)
+{
+    Console.WriteLine("----------------------------------------------------");
+    Console.WriteLine("Please enter your account number:");
+    string accountNumber = Console.ReadLine();
+
+    Console.WriteLine("Please enter your PIN:");
+    string pin = Console.ReadLine();
+
+    if (accountNumber == storedAccountNumber && pin == storedPin)
+    {
+        Console.WriteLine("Authentication successful. Welcome!");
+        authenticated = true;
+    }
+    else
+    {
+        Console.WriteLine("Invalid account number or PIN. Please try again.");
+    }
+}
 
 while (!exit)
 {
