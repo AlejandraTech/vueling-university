@@ -140,7 +140,8 @@ while (!exit)
             }
             break;
         case 6:
-            Console.WriteLine("You have chosen option 6");
+            Console.WriteLine("----------------------------------------------------");
+            Console.WriteLine("The current balance is: " + balance + " €");
             break;
         case 7:
             Console.WriteLine("Exiting the program...");
