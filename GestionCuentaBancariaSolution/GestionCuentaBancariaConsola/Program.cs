@@ -1,6 +1,7 @@
 ﻿// See https://aka.ms/new-console-template for more information
 bool exit = false;
 decimal balance = 10;
+bool isNumber;
 
 while (!exit)
 {
@@ -21,7 +22,33 @@ while (!exit)
     switch (option)
     {
         case 1:
-            Console.WriteLine("You have chosen option 1");
+            decimal numberIncome;
+            do
+            {
+                Console.WriteLine("----------------------------------------------------");
+                Console.WriteLine("Money deposit - Please enter an amount:");
+                String income = Console.ReadLine();
+                isNumber = decimal.TryParse(income, out numberIncome);
+
+                if (isNumber)
+                {
+                    if (numberIncome <= 0)
+                    {
+                        Console.WriteLine("Error! The value must be a positive number and cannot be 0.");
+                    }
+                    else
+                    {
+                        Console.WriteLine("You have successfully entered: " + numberIncome);
+                        balance += numberIncome;
+                        Console.WriteLine("The current balance is: " + balance);
+                    }
+                }
+                else
+                {
+                    Console.WriteLine("Error! Please enter a valid numerical value.");
+                }
+            } while (!isNumber || numberIncome <= 0);
+
             break;
         case 2:
             Console.WriteLine("You have chosen option 2");
@@ -36,10 +63,10 @@ while (!exit)
             Console.WriteLine("You have chosen option 5");
             break;
         case 6:
-            Console.WriteLine("El saldo actual es de: " + balance);
+            Console.WriteLine("You have chosen option 6");
             break;
         case 7:
-            Console.WriteLine("Saliendo del programa...");
+            Console.WriteLine("Exiting the program...");
             exit = true;
             break;
         default:
