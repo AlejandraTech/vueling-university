@@ -119,7 +119,7 @@ Console.WriteLine(numeros[0]);  // Imprime el primer número
 | **Tipo de Bucle**      | **Descripción**                                                                                           | **Ejemplo**                                                                                               |
 |------------------------|-----------------------------------------------------------------------------------------------------------|-----------------------------------------------------------------------------------------------------------|
 | **for**                | Itera un número específico de veces                                                                       | ``` for (int i = 0; i < 5; i++) { Console.WriteLine(i); } ```                                        |
-| **while**              | Repite el código mientras la condición sea verdadera                                                      | ```csharp while (edad < 18) { Console.WriteLine("Menor de edad"); } ```                                    |
+| **while**              | Repite el código mientras la condición sea verdadera                                                      | ``` while (edad < 18) { Console.WriteLine("Menor de edad"); } ```                                    |
 | **foreach**            | Itera sobre una colección                                                                                 | ``` foreach (var nombre in nombres) { Console.WriteLine(nombre); } ```                               |
 
 ---
