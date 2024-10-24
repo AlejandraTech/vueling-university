@@ -1,38 +1,49 @@
 ﻿// See https://aka.ms/new-console-template for more information
+using System;
+using System.Collections.Generic;
+
 bool exit = false;
-decimal balance = 10;
 bool isNumber;
 
-string storedAccountNumber = "123456789";
-string storedPin = "1234";
+List<string> accountNumbers = new List<string> { "123456789", "987654321", "111111111" };
+List<string> pins = new List<string> { "1234", "4321", "1111" };
+List<decimal> balances = new List<decimal> { 1000, 500, 300 };
+List<List<string>> allMovements = new List<List<string>> { new List<string>(), new List<string>(), new List<string>() };
+List<List<string>> allIncomes = new List<List<string>> { new List<string>(), new List<string>(), new List<string>() };
+List<List<string>> allOutcomes = new List<List<string>> { new List<string>(), new List<string>(), new List<string>() };
 
-List<string> movements = new List<string>();
-List<string> incomes = new List<string>();
-List<string> outcomes = new List<string>();
+int authenticatedUserIndex = -1;
 
 bool authenticated = false;
-while (!authenticated)
-{
-    Console.WriteLine("----------------------------------------------------");
-    Console.WriteLine("Please enter your account number:");
-    string accountNumber = Console.ReadLine();
-
-    Console.WriteLine("Please enter your PIN:");
-    string pin = Console.ReadLine();
-
-    if (accountNumber == storedAccountNumber && pin == storedPin)
-    {
-        Console.WriteLine("Authentication successful. Welcome!");
-        authenticated = true;
-    }
-    else
-    {
-        Console.WriteLine("Invalid account number or PIN. Please try again.");
-    }
-}
 
 while (!exit)
 {
+    while (!authenticated)
+    {
+        Console.WriteLine("----------------------------------------------------");
+        Console.WriteLine("Please enter your account number:");
+        string accountNumber = Console.ReadLine();
+
+        Console.WriteLine("Please enter your PIN:");
+        string pin = Console.ReadLine();
+
+        for (int i = 0; i < accountNumbers.Count; i++)
+        {
+            if (accountNumber == accountNumbers[i] && pin == pins[i])
+            {
+                Console.WriteLine("Authentication successful. Welcome, user with account " + accountNumber + "!");
+                authenticatedUserIndex = i;
+                authenticated = true;
+                break;
+            }
+        }
+
+        if (!authenticated)
+        {
+            Console.WriteLine("Invalid account number or PIN. Please try again.");
+        }
+    }
+
     Console.WriteLine("-----------------------------------");
     Console.WriteLine("1. Money income");
     Console.WriteLine("2. Money outcome");
@@ -67,10 +78,10 @@ while (!exit)
                     else
                     {
                         Console.WriteLine("You have successfully entered: " + numberIncome);
-                        balance += numberIncome;
-                        movements.Add($"Income: {numberIncome} €");
-                        incomes.Add($"Income: {numberIncome} €");
-                        Console.WriteLine("The current balance is: " + balance + " €");
+                        balances[authenticatedUserIndex] += numberIncome;
+                        allMovements[authenticatedUserIndex].Add($"Income: {numberIncome} €");
+                        allIncomes[authenticatedUserIndex].Add($"Income: {numberIncome} €");
+                        Console.WriteLine("The current balance is: " + balances[authenticatedUserIndex] + " €");
                     }
                 }
                 else
@@ -78,8 +89,8 @@ while (!exit)
                     Console.WriteLine("Error! Please enter a valid numerical value.");
                 }
             } while (!isNumber || numberIncome <= 0);
-
             break;
+
         case 2:
             decimal numberOutcome;
             do
@@ -97,33 +108,33 @@ while (!exit)
                     }
                     else
                     {
-                        if (numberOutcome <= balance)
+                        if (numberOutcome <= balances[authenticatedUserIndex])
                         {
                             Console.WriteLine("You have requested to withdraw the amount of: " + numberOutcome);
-                            balance -= numberOutcome;
-                            movements.Add($"Outcome: {numberOutcome} €");
-                            outcomes.Add($"Outcome: {numberOutcome} €");
-                            Console.WriteLine("The withdrawal has been completed successfully. The current balance is: " + balance + " €");
+                            balances[authenticatedUserIndex] -= numberOutcome;
+                            allMovements[authenticatedUserIndex].Add($"Outcome: {numberOutcome} €");
+                            allOutcomes[authenticatedUserIndex].Add($"Outcome: {numberOutcome} €");
+                            Console.WriteLine("The withdrawal has been completed successfully. The current balance is: " + balances[authenticatedUserIndex] + " €");
                         }
                         else
                         {
-                            Console.WriteLine("Error! You cannot withdraw an amount greater than your current balance from: " + balance + ".");
+                            Console.WriteLine("Error! You cannot withdraw an amount greater than your current balance of: " + balances[authenticatedUserIndex] + " €.");
                         }
                     }
                 }
                 else
                 {
-                    Console.WriteLine("¡Error! Por favor, introduce un valor numérico válido para el retiro.");
+                    Console.WriteLine("Error! Please enter a valid numerical value for the withdrawal.");
                 }
             } while (!isNumber || numberOutcome <= 0);
             break;
 
         case 3:
             Console.WriteLine("----------------------------------------------------");
-            Console.WriteLine("List of all movements:");
-            if (movements.Count > 0)
+            Console.WriteLine("List of all movements for user with account " + accountNumbers[authenticatedUserIndex] + ":");
+            if (allMovements[authenticatedUserIndex].Count > 0)
             {
-                foreach (var movement in movements)
+                foreach (var movement in allMovements[authenticatedUserIndex])
                 {
                     Console.WriteLine(movement);
                 }
@@ -133,12 +144,13 @@ while (!exit)
                 Console.WriteLine("No movements have been recorded yet.");
             }
             break;
+
         case 4:
             Console.WriteLine("----------------------------------------------------");
-            Console.WriteLine("List of incomes:");
-            if (incomes.Count > 0)
+            Console.WriteLine("List of incomes for user with account " + accountNumbers[authenticatedUserIndex] + ":");
+            if (allIncomes[authenticatedUserIndex].Count > 0)
             {
-                foreach (var incomeMovement in incomes)
+                foreach (var incomeMovement in allIncomes[authenticatedUserIndex])
                 {
                     Console.WriteLine(incomeMovement);
                 }
@@ -148,12 +160,13 @@ while (!exit)
                 Console.WriteLine("No incomes have been recorded yet.");
             }
             break;
+
         case 5:
             Console.WriteLine("----------------------------------------------------");
-            Console.WriteLine("List of outcomes:");
-            if (outcomes.Count > 0)
+            Console.WriteLine("List of outcomes for user with account " + accountNumbers[authenticatedUserIndex] + ":");
+            if (allOutcomes[authenticatedUserIndex].Count > 0)
             {
-                foreach (var outcomeMovement in outcomes)
+                foreach (var outcomeMovement in allOutcomes[authenticatedUserIndex])
                 {
                     Console.WriteLine(outcomeMovement);
                 }
@@ -163,14 +176,39 @@ while (!exit)
                 Console.WriteLine("No outcomes have been recorded yet.");
             }
             break;
+
         case 6:
             Console.WriteLine("----------------------------------------------------");
-            Console.WriteLine("The current balance is: " + balance + " €");
+            Console.WriteLine("The current balance for user with account " + accountNumbers[authenticatedUserIndex] + " is: " + balances[authenticatedUserIndex] + " €");
             break;
+
         case 7:
-            Console.WriteLine("Exiting the program...");
-            exit = true;
+            string changeAccount;
+            do
+            {
+                Console.WriteLine("Do you want to change your account? (Y/N)");
+                changeAccount = Console.ReadLine();
+
+                if (changeAccount.Equals("Y", StringComparison.OrdinalIgnoreCase) ||
+                    changeAccount.Equals("Yes", StringComparison.OrdinalIgnoreCase))
+                {
+                    authenticated = false;
+                }
+                else if (changeAccount.Equals("N", StringComparison.OrdinalIgnoreCase) ||
+                         changeAccount.Equals("No", StringComparison.OrdinalIgnoreCase))
+                {
+                    Console.WriteLine("The current balance is: " + balances[authenticatedUserIndex] + " €");
+                    Console.WriteLine("Exiting the program...");
+                    exit = true;
+                }
+                else
+                {
+                    Console.WriteLine("Please indicate Y/N");
+                }
+            } while (!changeAccount.Equals("Y", StringComparison.OrdinalIgnoreCase) &&
+                     !changeAccount.Equals("N", StringComparison.OrdinalIgnoreCase));
             break;
+
         default:
             Console.WriteLine("Choose an option between 1 and 7");
             break;
@@ -179,8 +217,7 @@ while (!exit)
     if (option == 1 || option == 2)
     {
         string anotherOperation;
-
-        while (true)
+        do
         {
             Console.WriteLine("Would you like to perform another operation? (Y/N)");
             anotherOperation = Console.ReadLine();
@@ -188,19 +225,19 @@ while (!exit)
             if (anotherOperation.Equals("Y", StringComparison.OrdinalIgnoreCase) ||
                 anotherOperation.Equals("Yes", StringComparison.OrdinalIgnoreCase))
             {
-                break;
+                exit = false;
             }
             else if (anotherOperation.Equals("N", StringComparison.OrdinalIgnoreCase) ||
                      anotherOperation.Equals("No", StringComparison.OrdinalIgnoreCase))
             {
-                Console.WriteLine("The current balance is: " + balance + " €");
+                Console.WriteLine("The current balance is: " + balances[authenticatedUserIndex] + " €");
                 exit = true;
-                break;
             }
             else
             {
-                Console.WriteLine("Please write Y or N");
+                Console.WriteLine("Please indicate Y/N");
             }
-        }
+        } while (!anotherOperation.Equals("Y", StringComparison.OrdinalIgnoreCase) &&
+                 !anotherOperation.Equals("N", StringComparison.OrdinalIgnoreCase));
     }
 }
