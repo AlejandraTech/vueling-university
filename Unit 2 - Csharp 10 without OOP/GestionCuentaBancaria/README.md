@@ -1,4 +1,4 @@
-﻿# 🌟 **Gestión de Cuenta Bancaria Mono-usuario y Multi-usuario**
+﻿# 💻 **Gestión de Cuenta Bancaria Mono-usuario y Multi-usuario**
 
 ### 🗂️ **Índice**
 
