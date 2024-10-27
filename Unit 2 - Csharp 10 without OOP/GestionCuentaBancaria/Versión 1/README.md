@@ -1,4 +1,4 @@
-# 🌟 **Gestión de Cuenta Bancaria Mono-usuario (Versión 1)**
+# 💻 **Gestión de Cuenta Bancaria Mono-usuario (Versión 1)**
 
 ## 🗂️ Índice
 
