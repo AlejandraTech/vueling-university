@@ -1,2 +1,2 @@
-﻿# 🌟 **Validación de Entradas en un Programa de Datos**
+﻿# 💻 **Validación de Entradas en un Programa de Datos**
 
