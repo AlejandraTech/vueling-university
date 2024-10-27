@@ -1,1 +1,1 @@
-# 🌟 **Gestión de Trabajadores: Modo Administrador**
+# 💻 **Gestión de Trabajadores: Modo Administrador**
