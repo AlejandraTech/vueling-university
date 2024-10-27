@@ -1,4 +1,4 @@
-# 🌟 **Gestión de Cuenta Bancaria Multi-usuario (Versión 2)**
+# 💻 **Gestión de Cuenta Bancaria Multi-usuario (Versión 2)**
 
 ## 🗂️ Índice
 
