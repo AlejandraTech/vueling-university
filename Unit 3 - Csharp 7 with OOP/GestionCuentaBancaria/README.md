@@ -1,10 +1,10 @@
-﻿# 🌟 **Gestión de Cuenta Bancaria Mono-usuario y Multi-usuario**
+# 💻 **Gestión de Cuenta Bancaria Mono-usuario y Multi-usuario**
 
 ### 🗂️ **Índice**
 
 | Sección                                                          | Descripción                                                                 |
 |------------------------------------------------------------------|-----------------------------------------------------------------------------|
-| [📄 Descripción](#-descripción)                                   | Introducción a las dos versiones del proyecto de gestión bancaria.          |
+| [📄 Descripción](#-descripción)                                   | Introducción a las tres versiones del proyecto de gestión bancaria.          |
 | [📦 Version 1: Gestión de Cuenta Bancaria Mono-usuario](#-version-1-gestión-de-cuenta-bancaria-mono-usuario) | Descripción y funcionalidades para un único cliente.                        |
 | [🛠️ Funcionalidades - Versión 1](#-funcionalidades)               | Lista de operaciones disponibles para el cliente en la versión mono-usuario.|
 | [🧭 Cómo funciona - Versión 1](#-cómo-funciona)                   | Detalle del flujo de trabajo y funcionamiento general.                      |
@@ -14,17 +14,21 @@
 | [🧭 Cómo funciona - Versión 2](#-cómo-funciona-1)                 | Descripción del proceso de acceso y operaciones para usuarios autenticados.  |
 | [🔑 Autenticación](#-autenticación)                               | Proceso de verificación del número de cuenta y PIN.                         |
 | [🗃️ Manejo de datos de usuarios](#-manejo-de-datos-de-usuarios)  | Organización de cuentas, pines y movimientos de cada cliente.               |
+| [📦 Version 3: Gestión de Cuenta Bancaria con Programación Orientada a Objetos](#-version-3-gestión-de-cuenta-bancaria-con-programación-orientada-a-objetos) | Implementación utilizando OOP para mayor modularidad y mantenimiento.       |
+| [🛠️ Funcionalidades - Versión 3](#-funcionalidades-2)             | Funciones de autenticación y operaciones para varios usuarios utilizando OOP.|
+| [🧭 Cómo funciona - Versión 3](#-cómo-funciona-2)                 | Descripción del proceso de acceso y operaciones en un enfoque OOP.          |
 | [📚 Recursos adicionales](#-recursos-adicionales)                 | Enlaces a documentación oficial de C# y tutoriales de .NET.                 |
 
 ---
 
 ## 📄 Descripción
-Este proyecto tiene dos versiones para gestionar una cuenta bancaria:
+Este proyecto tiene tres versiones para gestionar una cuenta bancaria:
 
 1. **Versión 1: Mono-usuario** - Un único cliente puede realizar operaciones como ingresos y retiradas de dinero.
 2. **Versión 2: Multi-usuario** - Varios clientes pueden gestionar sus cuentas bancarias utilizando un número de cuenta y un PIN.
+3. **Versión 3: Programación Orientada a Objetos** - Similar a la versión 2, pero estructurada utilizando principios de OOP para mayor modularidad y mantenimiento.
 
-Cada versión está diseñada para practicar el uso de C# 10 sin Programación Orientada a Objetos (OOP).
+Cada versión está diseñada para practicar el uso de C# 10 y diferentes paradigmas de programación.
 
 ---
 
@@ -101,6 +105,23 @@ La versión 2 amplía la funcionalidad para que varios usuarios puedan interactu
 | Cliente 1| 1001             | 1234  | 1000€  | [Ingreso: 500€, Retiro: 100€]|
 | Cliente 2| 1002             | 5678  | 1500€  | [Ingreso: 300€, Retiro: 50€] |
 | Cliente 3| 1003             | 9101  | 2000€  | [Ingreso: 700€, Retiro: 200€]|
+
+---
+
+## 📦 Version 3: Gestión de Cuenta Bancaria con Programación Orientada a Objetos
+
+Esta versión reestructura la funcionalidad de la versión 2 utilizando programación orientada a objetos (OOP). Esto permite un diseño más modular y fácil de mantener, donde cada clase representa un aspecto específico del sistema.
+
+### 🛠️ Funcionalidades
+1. **Clases**: Se definen clases para representar `Cliente`, `CuentaBancaria` y `Transacción`.
+2. **Autenticación**: El cliente se autentica utilizando sus credenciales almacenadas en instancias de `Cliente`.
+3. **Operaciones de cuenta**: Los métodos para ingresar y retirar dinero están encapsulados dentro de la clase `CuentaBancaria`.
+4. **Registro de movimientos**: Se utilizan instancias de `Transacción` para registrar cada operación, permitiendo un seguimiento detallado.
+
+### 🧭 Cómo funciona
+- **Instanciación de objetos**: Al inicio, se crean objetos `Cliente` con su información personal, incluyendo cuentas asociadas.
+- **Menú de operaciones**: Al autenticar al usuario, se presenta un menú para realizar operaciones sobre su cuenta.
+- **Manejo de errores**: Las excepciones se manejan para asegurar que las operaciones sean seguras.
 
 ---
 
