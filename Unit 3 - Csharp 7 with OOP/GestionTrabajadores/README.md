@@ -1,1 +1,1 @@
-# 🌟 **Gestión de Trabajadores**
+# 💻 **Gestión de Trabajadores**
