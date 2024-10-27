@@ -15,7 +15,8 @@
 
 ## 📄 Descripción del Proyecto
 
-> **Nota:** Este proyecto en **C#** ilustra los principios de **Programación Orientada a Objetos (POO)** mediante una estructura familiar básica (abuelo, padre, hijo).
+> [!NOTE]
+> Este proyecto en **C#** ilustra los principios de **Programación Orientada a Objetos (POO)** mediante una estructura familiar básica (abuelo, padre, hijo).
 
 Las clases `Grandfather`, `Father` y `Son` demuestran conceptos de **herencia** y **control de acceso** con los modificadores `public`, `protected` y `private`. A través de una aplicación de consola, el usuario puede ver y modificar los valores de los campos definidos para cada miembro de la familia, explorando cómo se comportan los niveles de acceso.
 
@@ -59,7 +60,8 @@ El proyecto utiliza una estructura jerárquica de clases basada en la familia pa
 | **Father**      | Hereda de `Grandfather` e incluye nombre (`public`), hobby (`protected`) y edad (`private`).            |
 | **Son**         | Hereda de `Father` e incluye apodo (`public`), deporte favorito (`protected`) y edad (`private`).      |
 
-> **Nota:** La jerarquía de clases permite que cada generación tenga campos adicionales, demostrando cómo los atributos y métodos pueden transmitirse y controlarse en niveles de acceso.
+> [!NOTE]
+> La jerarquía de clases permite que cada generación tenga campos adicionales, demostrando cómo los atributos y métodos pueden transmitirse y controlarse en niveles de acceso.
 
 ### Funcionalidad de las Opciones
 
@@ -95,7 +97,8 @@ El proyecto utiliza una estructura jerárquica de clases basada en la familia pa
 | 2      | Modificar los valores de los campos, con validación de datos.               |
 | 3      | Salir del programa.                                                         |
 
-> **Importante:** El menú interactivo y la validación de entradas permiten que el usuario explore la estructura de la clase `Son` y sus campos heredados.
+> [!IMPORTANT]
+> El menú interactivo y la validación de entradas permiten que el usuario explore la estructura de la clase `Son` y sus campos heredados.
 
 ---
 
