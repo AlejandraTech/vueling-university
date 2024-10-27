@@ -8,7 +8,7 @@ namespace GestionTrabajadoresConsole.Enum
 {
     internal enum EnumStatusTask
     {
-        Todo,
+        ToDo,
         Doing,
         Done
     }
