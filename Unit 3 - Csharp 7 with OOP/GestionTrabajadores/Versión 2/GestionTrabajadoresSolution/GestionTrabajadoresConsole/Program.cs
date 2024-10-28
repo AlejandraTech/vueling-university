@@ -19,27 +19,7 @@ namespace GestionTrabajadoresConsole
 
         static void Main(string[] args)
         {
-            while (true)
-            {
-                Console.WriteLine("Enter worker ID to login: ");
-                int workerId = int.Parse(Console.ReadLine());
-
-                if (workerId == 0)
-                {
-                    isAdmin = true;
-                    break;
-                }
-
-                loggedInWorker = workers.FirstOrDefault(w => w.Id == workerId);
-                if (loggedInWorker == null)
-                {
-                    isAdmin = false;
-                    break;
-                }
-
-                Console.WriteLine("Invalid worker ID. Please try again.");
-            }
-
+            Login();
             bool exit = false;
 
             while (!exit)
@@ -102,13 +82,57 @@ namespace GestionTrabajadoresConsole
                         break;
 
                     case 11:
-                        Console.WriteLine("Exiting the program...");
-                        exit = true;
+                        Console.WriteLine("Do you want to change your account? (Y/N)");
+                        string changeAccount = Console.ReadLine();
+
+                        if (changeAccount.Equals("Y", StringComparison.OrdinalIgnoreCase) || changeAccount.Equals("Yes", StringComparison.OrdinalIgnoreCase))
+                        {
+                            loggedInWorker = null;
+                            isAdmin = false;
+                            Login();
+                        }
+                        else
+                        {
+                            Console.WriteLine("Exiting the program...");
+                            Environment.Exit(0);
+                        }
                         break;
+
                     default:
                         Console.WriteLine("Please choose an option between 1 and 11.");
                         break;
                 }
+            }
+        }
+        static void Login()
+        {
+            while (true)
+            {
+                Console.WriteLine("Enter worker ID to login: ");
+                int workerId;
+
+                if (!int.TryParse(Console.ReadLine(), out workerId))
+                {
+                    Console.WriteLine("Invalid input. Please enter a valid worker ID.");
+                    continue;
+                }
+
+                if (workerId == 0)
+                {
+                    isAdmin = true;
+                    break;
+                }
+
+                loggedInWorker = workers.FirstOrDefault(w => w.Id == workerId);
+
+                if (loggedInWorker == null)
+                {
+                    Console.WriteLine("This worker ID does not exist. Please try again.");
+                    continue;
+                }
+
+                isAdmin = false;
+                break;
             }
         }
 
