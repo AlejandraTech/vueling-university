@@ -18,7 +18,7 @@
 
 ---
 
-## 📚 1. Clase y Objeto
+## 1. 📚 Clase y Objeto
 
 ### 🧐 Introducción a Clases y Objetos
 La programación orientada a objetos (OOP) es un paradigma que organiza el software en **"objetos"**, que son instancias de **"clases"**. Los conceptos de **clase** y **objeto** son fundamentales para OOP.
@@ -97,7 +97,7 @@ Coche
 
 ---
 
-## 🔍 2. Campo, Método, Propiedad, Atributo
+## 2. 🔍 Campo, Método, Propiedad, Atributo
 
 ### 🔧 Componentes de una Clase en C#
 Dentro de una clase en C#, se pueden incluir varios elementos:
@@ -164,7 +164,7 @@ Los modificadores de acceso determinan la visibilidad de los campos, métodos y 
 
 ---
 
-## 📏 3. Principios de OOP
+## 3. 📏 Principios de OOP
 
 Los principios de la programación orientada a objetos son fundamentales:
 
@@ -286,7 +286,7 @@ HacerSonidoDelAnimal(new Gato()); // ¡Miau!
 
 ---
 
-## ✔️ 4. Ventajas de Usar OOP
+## 4. ✔️ Ventajas de Usar OOP
 Las ventajas de utilizar la programación orientada a objetos incluyen:
 
 - **Reusabilidad**: Métodos y clases pueden ser reutilizados.
