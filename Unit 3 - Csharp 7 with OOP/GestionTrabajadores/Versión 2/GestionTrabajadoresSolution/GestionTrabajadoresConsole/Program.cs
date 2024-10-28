@@ -25,17 +25,35 @@ namespace GestionTrabajadoresConsole
             while (!exit)
             {
                 Console.WriteLine("-----------------------------------");
-                Console.WriteLine("1. Register new IT worker");
-                Console.WriteLine("2. Register new team");
-                Console.WriteLine("3. Register new task");
-                Console.WriteLine("4. List all team names");
-                Console.WriteLine("5. List team members by team name");
-                Console.WriteLine("6. List unassigned tasks");
-                Console.WriteLine("7. Assign IT worker to a team as manager");
-                Console.WriteLine("8. Assign IT worker to a team as technician");
-                Console.WriteLine("9. Assign task to IT worker");
-                Console.WriteLine("10. Unregister IT worker");
-                Console.WriteLine("11. Exit");
+                if (isAdmin)
+                {
+                    Console.WriteLine("1. Register new IT worker");
+                    Console.WriteLine("2. Register new team");
+                    Console.WriteLine("3. Register new task");
+                    Console.WriteLine("4. List all team names");
+                    Console.WriteLine("5. List team members by team name");
+                    Console.WriteLine("6. List unassigned tasks");
+                    Console.WriteLine("7. List task assignments by team name");
+                    Console.WriteLine("8. Assign IT worker to a team as manager");
+                    Console.WriteLine("9. Assign IT worker to a team as technician");
+                    Console.WriteLine("10. Assign task to IT worker");
+                    Console.WriteLine("11. Unregister IT worker");
+                }
+                else if (loggedInWorker?.CanBeManager() == true)
+                {
+                    Console.WriteLine("5. List team members by team name");
+                    Console.WriteLine("6. List unassigned tasks");
+                    Console.WriteLine("7. List task assignments by team name");
+                    Console.WriteLine("9. Assign IT worker to a team as technician");
+                    Console.WriteLine("10. Assign task to IT worker");
+                }
+                else
+                {
+                    Console.WriteLine("6. List unassigned tasks");
+                    Console.WriteLine("7. List task assignments by team name");
+                    Console.WriteLine("10. Assign task to yourself");
+                }
+                Console.WriteLine("12. Exit");
                 Console.WriteLine("-----------------------------------");
                 Console.Write("What action do you want to perform? ");
 
@@ -60,28 +78,31 @@ namespace GestionTrabajadoresConsole
                         else Console.WriteLine("You don't have permissions.");
                         break;
                     case 5:
-                        ListTeamMembersByTeamName();
+                        if (isAdmin || loggedInWorker?.CanBeManager() == true) ListTeamMembersByTeamName();
+                        else Console.WriteLine("You don't have permissions.");
                         break;
                     case 6:
                         ListUnassignedTasks();
                         break;
                     case 7:
-                        if (loggedInWorker?.CanBeManager() == true || isAdmin) AssignITWorkerManager();
-                        else Console.WriteLine("You don't have permissions.");
+                        ListTaskAssignmentsByTeamName();
                         break;
                     case 8:
-                        if (isAdmin) AssignITWorkerTechnician();
+                        if (isAdmin) AssignITWorkerManager();
                         else Console.WriteLine("You don't have permissions.");
                         break;
                     case 9:
-                        AssignTaskITWorker();
-                        break;
-                    case 10:
-                        if (isAdmin || loggedInWorker != null) UnregisterITWorker();
+                        if (isAdmin || loggedInWorker?.CanBeManager() == true) AssignITWorkerTechnician();
                         else Console.WriteLine("You don't have permissions.");
                         break;
-
+                    case 10:
+                        AssignTaskITWorker();
+                        break;
                     case 11:
+                        if (isAdmin) UnregisterITWorker();
+                        else Console.WriteLine("You don't have permissions.");
+                        break;
+                    case 12:
                         Console.WriteLine("Do you want to change your account? (Y/N)");
                         string changeAccount = Console.ReadLine();
 
@@ -186,7 +207,14 @@ namespace GestionTrabajadoresConsole
         {
             string teamName = GetInput("Enter team name: ");
             Team team = teams.FirstOrDefault(t => t.Name.Equals(teamName, StringComparison.OrdinalIgnoreCase));
-            if (team != null)
+
+            if (team == null)
+            {
+                Console.WriteLine("Team not found.");
+                return;
+            }
+
+            if (isAdmin || (loggedInWorker != null && team.Manager?.Id == loggedInWorker.Id))
             {
                 Console.WriteLine($"Team {team.Name} members:");
                 Console.WriteLine($"Manager: {team.Manager?.Name ?? "No manager assigned"}");
@@ -197,7 +225,7 @@ namespace GestionTrabajadoresConsole
             }
             else
             {
-                Console.WriteLine("Team not found.");
+                Console.WriteLine("You don't have permission to view this team.");
             }
         }
 
@@ -207,6 +235,35 @@ namespace GestionTrabajadoresConsole
             foreach (var task in tasks.Where(t => t.IdWorker == null))
             {
                 Console.WriteLine($"- Task ID: {task.Id}, Description: {task.Description}, Technology: {task.Technology}");
+            }
+        }
+
+        static void ListTaskAssignmentsByTeamName()
+        {
+            string teamName = GetInput("Enter team name to view task assignments: ");
+            Team team = teams.FirstOrDefault(t => t.Name.Equals(teamName, StringComparison.OrdinalIgnoreCase));
+
+            if (team == null)
+            {
+                Console.WriteLine("Team not found.");
+                return;
+            }
+
+            var assignedTasks = tasks
+                .Where(t => t.IdWorker != null && team.Technians.Any(w => w.Id == t.IdWorker))
+                .ToList();
+
+            if (!assignedTasks.Any())
+            {
+                Console.WriteLine("No tasks assigned to this team's members.");
+            }
+            else
+            {
+                foreach (var task in assignedTasks)
+                {
+                    ITWorker worker = workers.FirstOrDefault(w => w.Id == task.IdWorker);
+                    Console.WriteLine($"- Task ID: {task.Id}, Description: {task.Description}, Assigned to: {worker?.Name ?? "Unknown"}");
+                }
             }
         }
 
@@ -262,7 +319,13 @@ namespace GestionTrabajadoresConsole
         {
             int taskId = int.Parse(GetInput("Enter task ID to assign: "));
             WorkerTask task = tasks.FirstOrDefault(t => t.Id == taskId);
-            if (task != null)
+            if (task == null)
+            {
+                Console.WriteLine("Task not found.");
+                return;
+            }
+
+            if (isAdmin || (loggedInWorker?.CanBeManager() == true))
             {
                 int workerId = int.Parse(GetInput("Enter worker ID to assign the task: "));
                 ITWorker worker = workers.FirstOrDefault(w => w.Id == workerId);
@@ -276,9 +339,14 @@ namespace GestionTrabajadoresConsole
                     Console.WriteLine("Cannot assign task to this worker.");
                 }
             }
+            else if (loggedInWorker != null)
+            {
+                task.AssignToWorker(loggedInWorker.Id);
+                Console.WriteLine($"Task '{task.Description}' assigned to yourself ({loggedInWorker.Name}).");
+            }
             else
             {
-                Console.WriteLine("Task not found.");
+                Console.WriteLine("You don't have permission to assign tasks.");
             }
         }
 
