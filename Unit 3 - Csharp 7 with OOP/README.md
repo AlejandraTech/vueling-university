@@ -1,4 +1,4 @@
-# 🌟 **Unit 3: Csharp 7 with OOP**
+# 🌟 **Unidad 3: C# 7 con OOP**
 
 ### 🗂️ **Índice**
 
