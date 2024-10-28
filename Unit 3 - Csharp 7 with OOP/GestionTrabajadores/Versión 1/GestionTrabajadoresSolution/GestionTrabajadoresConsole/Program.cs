@@ -27,11 +27,12 @@ namespace GestionTrabajadoresConsole
                 Console.WriteLine("4. List all team names");
                 Console.WriteLine("5. List team members by team name");
                 Console.WriteLine("6. List unassigned tasks");
-                Console.WriteLine("7. Assign IT worker to a team as manager");
-                Console.WriteLine("8. Assign IT worker to a team as technician");
-                Console.WriteLine("9. Assign task to IT worker");
-                Console.WriteLine("10. Unregister IT worker");
-                Console.WriteLine("11. Exit");
+                Console.WriteLine("7. List task assignments by team name");
+                Console.WriteLine("8. Assign IT worker to a team as manager");
+                Console.WriteLine("9. Assign IT worker to a team as technician");
+                Console.WriteLine("10. Assign task to IT worker");
+                Console.WriteLine("11. Unregister IT worker");
+                Console.WriteLine("12. Exit");
                 Console.WriteLine("-----------------------------------");
                 Console.Write("What action do you want to perform? ");
 
@@ -58,18 +59,21 @@ namespace GestionTrabajadoresConsole
                         ListUnassignedTasks();
                         break;
                     case 7:
-                        AssignITWorkerManager();
+                        ListTaskAssignmentsByTeamName();
                         break;
                     case 8:
-                        AssignITWorkerTechnician();
+                        AssignITWorkerManager();
                         break;
                     case 9:
-                        AssignTaskITWorker();
+                        AssignITWorkerTechnician();
                         break;
                     case 10:
-                        UnregisterITWorker();
+                        AssignTaskITWorker();
                         break;
                     case 11:
+                        UnregisterITWorker();
+                        break;
+                    case 12:
                         Console.WriteLine("Exiting the program...");
                         exit = true;
                         break;
@@ -151,6 +155,35 @@ namespace GestionTrabajadoresConsole
             foreach (var task in tasks.Where(t => t.IdWorker == null))
             {
                 Console.WriteLine($"- Task ID: {task.Id}, Description: {task.Description}, Technology: {task.Technology}");
+            }
+        }
+
+        static void ListTaskAssignmentsByTeamName()
+        {
+            string teamName = GetInput("Enter team name to view task assignments: ");
+            Team team = teams.FirstOrDefault(t => t.Name.Equals(teamName, StringComparison.OrdinalIgnoreCase));
+
+            if (team == null)
+            {
+                Console.WriteLine("Team not found.");
+                return;
+            }
+
+            var assignedTasks = tasks
+                .Where(t => t.IdWorker != null && team.Technians.Any(w => w.Id == t.IdWorker))
+                .ToList();
+
+            if (!assignedTasks.Any())
+            {
+                Console.WriteLine("No tasks assigned to this team's members.");
+            }
+            else
+            {
+                foreach (var task in assignedTasks)
+                {
+                    ITWorker worker = workers.FirstOrDefault(w => w.Id == task.IdWorker);
+                    Console.WriteLine($"- Task ID: {task.Id}, Description: {task.Description}, Assigned to: {worker?.Name ?? "Unknown"}");
+                }
             }
         }
 
