@@ -13,6 +13,8 @@
 | [🧭 Cómo funciona - Versión 2](#-cómo-funciona-1)                 | Descripción del proceso de acceso y operaciones para trabajadores autenticados.|
 | [🔑 Autenticación](#-autenticación)                               | Proceso de verificación del ID del trabajador.                             |
 | [🗃️ Manejo de datos de trabajadores](#-manejo-de-datos-de-trabajadores) | Organización de trabajadores, equipos y tareas.                             |
+| [📦 Version 3: Mejora de Código con Buenas Prácticas](#-version-3-mejora-de-código-con-buenas-prácticas) | Introducción a las mejores prácticas en OOP para el código del proyecto.    |
+| [🛠️ Funcionalidades - Versión 3](#-funcionalidades-2)             | Enfoque en las prácticas recomendadas y principios de diseño.              |
 | [📚 Recursos adicionales](#-recursos-adicionales)                 | Enlaces a documentación oficial de C# y tutoriales de .NET.                 |
 
 ---
@@ -103,6 +105,20 @@ La versión 2 amplía la funcionalidad para que varios trabajadores puedan inter
 | Trabajador 1| 1001| Juan   | Pérez    | 6                 | [C#, SQL]             | Senior  |
 | Trabajador 2| 1002| María  | Gómez    | 4                 | [Java, Python]        | Medium  |
 | Trabajador 3| 1003| Luis   | Fernández| 2                 | [HTML, CSS]           | Junior  |
+
+---
+
+## 📦 Version 3: Mejora de Código con Buenas Prácticas
+
+La Versión 3 implementa mejoras en la calidad del código y sigue principios de diseño en programación orientada a objetos.
+
+### 🛠️ Funcionalidades - Versión 3
+1. **Convenciones de Codificación en C#**: Se aplican convenciones para asegurar claridad y consistencia en el código.
+2. **Principios de Diseño**: Se utilizan principios como SOLID, CUPID y GRASP para estructurar el código.
+3. **Acrónimos Importantes**: Implementación de principios como DRY (Don't Repeat Yourself), KISS (Keep It Simple, Stupid) y YAGNI (You Aren't Gonna Need It).
+4. **Código Limpio**: Se mantienen prácticas para mantener el código comprensible y libre de elementos innecesarios.
+5. **Domain-Driven Design (DDD)**: Aplicación de conceptos clave de DDD para el diseño del software basado en el dominio del negocio.
+6. **Patrones de Diseño de GoF**: Uso de patrones clásicos para resolver problemas comunes en el desarrollo de software.
 
 ---
 
