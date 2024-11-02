@@ -1,0 +1,80 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.11.35327.3
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "1-Presentation", "1-Presentation", "{6E692063-39AB-409C-A37E-E7832A709D4F}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "2-Business", "2-Business", "{E95CEAC9-5284-4789-9759-3BF486EDCE80}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "3-Domain", "3-Domain", "{0855DE54-C57F-4239-896B-EADDBC68F582}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "4-Infraestructure", "4-Infraestructure", "{85BB0189-1DEA-40F3-8040-F17C1C70249E}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "5-XCutting", "5-XCutting", "{12348867-F4EC-4DBD-B641-247DF6DFDF58}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GestionCuentaBancaria.Presentation.ConsoleUI", "GestionCuentaBancaria.Presentation.ConsoleUI\GestionCuentaBancaria.Presentation.ConsoleUI.csproj", "{6E42F8ED-0E9E-41F3-86AF-F10A9281365E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GestionCuentaBancaria.Business.Contracts", "GestionCuentaBancaria.Business.Contracts\GestionCuentaBancaria.Business.Contracts.csproj", "{3FAA023D-7E70-431A-8B91-88F44668A0D7}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GestionCuentaBancaria.Business.Impl", "GestionCuentaBancaria.Business.Impl\GestionCuentaBancaria.Business.Impl.csproj", "{45C81EAB-7AD5-4629-8BFC-A08601AC1ECC}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GestionCuentaBancaria.Domain.Models", "GestionCuentaBancaria.Domain.Models\GestionCuentaBancaria.Domain.Models.csproj", "{CAABF984-52B9-4967-8220-02D704E37F8D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GestionCuentaBancaria.Infrastructure.Contracts", "GestionCuentaBancaria.Infrastructure.Contracts\GestionCuentaBancaria.Infrastructure.Contracts.csproj", "{ED1EE0F2-ED98-448E-92AD-E010D917E5FD}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GestionCuentaBancaria.Infrastructure.Impl", "GestionCuentaBancaria.Infrastructure.Impl\GestionCuentaBancaria.Infrastructure.Impl.csproj", "{8399C9A8-2DD4-4208-805C-446AF0DC1A42}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GestionCuentaBancaria.XCutting.Enums", "GestionCuentaBancaria.XCutting.Enums\GestionCuentaBancaria.XCutting.Enums.csproj", "{D5D065E8-BFAE-40CE-B4AF-F582F7E58297}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{6E42F8ED-0E9E-41F3-86AF-F10A9281365E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6E42F8ED-0E9E-41F3-86AF-F10A9281365E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6E42F8ED-0E9E-41F3-86AF-F10A9281365E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6E42F8ED-0E9E-41F3-86AF-F10A9281365E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3FAA023D-7E70-431A-8B91-88F44668A0D7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3FAA023D-7E70-431A-8B91-88F44668A0D7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3FAA023D-7E70-431A-8B91-88F44668A0D7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3FAA023D-7E70-431A-8B91-88F44668A0D7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{45C81EAB-7AD5-4629-8BFC-A08601AC1ECC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{45C81EAB-7AD5-4629-8BFC-A08601AC1ECC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{45C81EAB-7AD5-4629-8BFC-A08601AC1ECC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{45C81EAB-7AD5-4629-8BFC-A08601AC1ECC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CAABF984-52B9-4967-8220-02D704E37F8D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CAABF984-52B9-4967-8220-02D704E37F8D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CAABF984-52B9-4967-8220-02D704E37F8D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CAABF984-52B9-4967-8220-02D704E37F8D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{ED1EE0F2-ED98-448E-92AD-E010D917E5FD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{ED1EE0F2-ED98-448E-92AD-E010D917E5FD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{ED1EE0F2-ED98-448E-92AD-E010D917E5FD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{ED1EE0F2-ED98-448E-92AD-E010D917E5FD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8399C9A8-2DD4-4208-805C-446AF0DC1A42}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8399C9A8-2DD4-4208-805C-446AF0DC1A42}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8399C9A8-2DD4-4208-805C-446AF0DC1A42}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8399C9A8-2DD4-4208-805C-446AF0DC1A42}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D5D065E8-BFAE-40CE-B4AF-F582F7E58297}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D5D065E8-BFAE-40CE-B4AF-F582F7E58297}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D5D065E8-BFAE-40CE-B4AF-F582F7E58297}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D5D065E8-BFAE-40CE-B4AF-F582F7E58297}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{6E42F8ED-0E9E-41F3-86AF-F10A9281365E} = {6E692063-39AB-409C-A37E-E7832A709D4F}
+		{3FAA023D-7E70-431A-8B91-88F44668A0D7} = {E95CEAC9-5284-4789-9759-3BF486EDCE80}
+		{45C81EAB-7AD5-4629-8BFC-A08601AC1ECC} = {E95CEAC9-5284-4789-9759-3BF486EDCE80}
+		{CAABF984-52B9-4967-8220-02D704E37F8D} = {0855DE54-C57F-4239-896B-EADDBC68F582}
+		{ED1EE0F2-ED98-448E-92AD-E010D917E5FD} = {85BB0189-1DEA-40F3-8040-F17C1C70249E}
+		{8399C9A8-2DD4-4208-805C-446AF0DC1A42} = {85BB0189-1DEA-40F3-8040-F17C1C70249E}
+		{D5D065E8-BFAE-40CE-B4AF-F582F7E58297} = {12348867-F4EC-4DBD-B641-247DF6DFDF58}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {DBF8F684-FC02-4279-AC67-E4E786FED8CB}
+	EndGlobalSection
+EndGlobal
