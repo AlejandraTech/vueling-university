@@ -19,6 +19,9 @@
 | [🧭 Cómo funciona - Versión 3](#-cómo-funciona-2)                 | Descripción del proceso de acceso y operaciones en un enfoque OOP.          |
 | [📦 Versión 4: Refactorización y Buenas Prácticas](#📦-versión-4-refactorización-y-buenas-prácticas) | Refactorización aplicando principios de buenas prácticas.                  |
 | [🛠️ Funcionalidades - Versión 4](#🛠️-funcionalidades-versión-4)                                | Detalle de principios de diseño aplicados en la refactorización.           |
+| [📦 Versión 5: Arquitectura en Capas con Separación de Responsabilidades](#-versión-5-arquitectura-en-capas-con-separación-de-responsabilidades) | Organización en capas para mejorar la modularidad y la separación de responsabilidades. |
+| [🛠️ Funcionalidades - Versión 5](#🛠️-funcionalidades-versión-5)   | Descripción de las capas de arquitectura, sus roles y funciones principales. |
+| [🧭 Cómo funciona - Versión 5](#-cómo-funciona-1)                 | Flujo de datos y conexión entre las capas en esta estructura de proyecto.   |
 | [📚 Recursos adicionales](#-recursos-adicionales)                 | Enlaces a documentación oficial de C# y tutoriales de .NET.                 |
 
 ---
@@ -138,6 +141,46 @@ La **Versión 4** se centra en la mejora de la organización del código y en la
 4. **Principio de Inversión de Dependencias (DIP)**: Uso de interfaces para definir comportamientos, permitiendo inyecciones de dependencias que aumentan la flexibilidad.
 
 Esta versión ofreciendo un código modular, mantenible y alineado con buenas prácticas de diseño.
+
+---
+
+## 📦 Versión 5: Arquitectura en Capas con Separación de Responsabilidades
+
+La **Versión 5** introduce una arquitectura en capas para mejorar la organización del proyecto y permitir una separación clara de responsabilidades. Este diseño facilita el mantenimiento, la escalabilidad y la flexibilidad del sistema, permitiendo una gestión eficiente de cambios y expansiones futuras.
+
+### 🛠️ Funcionalidades - Versión 5
+
+Esta versión organiza el código en cinco capas distintas, cada una con su rol específico en el sistema:
+
+1. **Presentación** (`Presentation`): Gestiona la interfaz de usuario y la interacción con el cliente.
+   - **ConsoleUI**: Contiene la clase `MainMenu.cs`, que es responsable de presentar el menú y recibir las elecciones del usuario. Se conecta a otras capas para procesar los datos y ejecutar las operaciones seleccionadas.
+   - `Program.cs`: Realiza la configuración inicial de la aplicación.
+
+2. **Negocio** (`Business`): Incluye la lógica de negocio y se asegura de coordinar el flujo de datos entre la interfaz de usuario y el dominio.
+   - **Contracts**: Define contratos e interfaces, como `INombreAService.cs`, que permiten definir las reglas de negocio sin depender de implementaciones específicas.
+   - **DTOs**: Contiene los objetos de transferencia de datos (DTO), que facilitan el envío de datos entre las capas de forma estructurada.
+   - **Impl**: Implementa la lógica de negocio definida en los contratos, por ejemplo, `NombreAService.cs` contiene métodos para manejar operaciones específicas del negocio.
+
+3. **Dominio** (`Domain`): Representa el núcleo de las reglas de negocio y define las entidades principales del sistema.
+   - **Models**: Contiene los modelos de negocio, como `NombreAModel.cs` y `NombreBModel.cs`, que representan las entidades principales en el sistema, como el `Cliente` y la `CuentaBancaria`, incluyendo sus atributos y reglas.
+
+4. **Infraestructura** (`Infrastructure`): Gestiona la persistencia de datos y el acceso a la base de datos.
+   - **Contracts**: Define las interfaces de repositorio, como `INombreARepository.cs` e `INombreBRepository.cs`, permitiendo la abstracción de la persistencia.
+   - **Entities**: Define las clases de entidades utilizadas en la persistencia, como `NombreAEntity.cs` y `NombreBEntity.cs`.
+   - **Impl**: Implementa los métodos de acceso a la base de datos, facilitando la conexión entre el sistema y su almacenamiento de datos.
+
+5. **Corte Transversal** (`XCutting`): Contiene elementos compartidos por múltiples capas, como enumeraciones, excepciones personalizadas y utilidades comunes.
+   - **Enums**: Define enumeraciones como `NombreCErrorEnum`, que facilitan la gestión de errores y constantes.
+   - **Excepciones Personalizadas**: Puede incluir excepciones diseñadas para capturar errores específicos y mejorar la legibilidad del código y el manejo de errores.
+
+### 🧭 Cómo funciona
+
+Esta arquitectura en capas sigue un flujo de datos estructurado, permitiendo que cada capa interactúe únicamente con sus adyacentes:
+- **Presentación (UI)** → **Negocio**: La capa de presentación toma las entradas del usuario y las pasa a la capa de negocio para su procesamiento.
+- **Negocio** → **Dominio e Infraestructura**: La capa de negocio coordina las operaciones, solicitando datos al dominio y gestionando su almacenamiento en la infraestructura.
+- **Corte Transversal**: Elementos reutilizables que pueden ser accedidos por cualquier capa sin romper la modularidad.
+
+Esta estructura modular permite que la aplicación sea fácil de probar, extender y mantener, asegurando que cada cambio se limite a su capa correspondiente sin afectar a las demás.
 
 ---
 
