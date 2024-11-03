@@ -5,9 +5,9 @@
         public string AccountNumber { get; set; }
         public string Pin { get; set; }
         public decimal Balance { get; set; }
-        public List<string> Movements { get; private set; }
-        public List<string> Incomes { get; private set; }
-        public List<string> Outcomes { get; private set; }
+        public List<string> Movements { get; set; }
+        public List<string> Incomes { get; set; }
+        public List<string> Outcomes { get; set; }
 
         public AccountEntity(string accountNumber, string pin, decimal initialBalance)
         {

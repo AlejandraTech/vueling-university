@@ -24,5 +24,18 @@ namespace GestionCuentaBancaria.Infrastructure.Impl
                 accountEntity.Balance
             );
         }
+
+        public void UpdateAccountBalance(AccountModel account)
+        {
+            var accountEntity = _bankEntity.GetAccountByNumber(account.AccountNumber);
+            if (accountEntity != null)
+            {
+                accountEntity.Balance = account.Balance;
+                accountEntity.Movements = account.GetMovements();
+                accountEntity.Incomes = account.GetIncomes();
+                accountEntity.Outcomes = account.GetOutcomes();
+            }
+        }
     }
 }
+

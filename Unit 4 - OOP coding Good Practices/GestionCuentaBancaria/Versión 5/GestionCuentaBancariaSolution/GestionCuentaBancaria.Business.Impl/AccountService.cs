@@ -29,6 +29,7 @@ namespace GestionCuentaBancaria.Business.Impl
             var acc = _bankRepository.GetAccountByNumber(account.AccountNumber);
             acc.Deposit(amount);
             account.Balance = acc.Balance;
+            _bankRepository.UpdateAccountBalance(acc);
         }
 
         public void Withdraw(AccountDto account, decimal amount)
@@ -36,6 +37,7 @@ namespace GestionCuentaBancaria.Business.Impl
             var acc = _bankRepository.GetAccountByNumber(account.AccountNumber);
             acc.Withdraw(amount);
             account.Balance = acc.Balance;
+            _bankRepository.UpdateAccountBalance(acc);
         }
 
         public List<string> GetMovements(AccountDto account)
