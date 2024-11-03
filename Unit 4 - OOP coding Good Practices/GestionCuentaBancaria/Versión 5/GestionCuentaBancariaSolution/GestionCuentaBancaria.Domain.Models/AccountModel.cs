@@ -25,8 +25,9 @@
         {
             if (amount <= 0) throw new ArgumentException("Amount must be positive.");
             Balance += amount;
-            movements.Add($"Income: {amount}");
-            incomes.Add($"Income: {amount}");
+            string transaction = $"Income: {amount}";
+            movements.Add(transaction);
+            incomes.Add(transaction);
         }
 
         public void Withdraw(decimal amount)
@@ -34,12 +35,13 @@
             if (amount <= 0) throw new ArgumentException("Amount must be positive.");
             if (amount > Balance) throw new ArgumentException("Insufficient funds.");
             Balance -= amount;
-            movements.Add($"Outcome: {amount}");
-            outcomes.Add($"Outcome: {amount}");
+            string transaction = $"Outcome: {amount}";
+            movements.Add(transaction);
+            outcomes.Add(transaction);
         }
 
-        public List<string> GetMovements() => movements;
-        public List<string> GetIncomes() => incomes;
-        public List<string> GetOutcomes() => outcomes;
+        public List<string> GetMovements() => new List<string>(movements);
+        public List<string> GetIncomes() => new List<string>(incomes);
+        public List<string> GetOutcomes() => new List<string>(outcomes);
     }
 }
