@@ -38,7 +38,7 @@ Este repositorio incluye proyectos organizados por **unidades**. Cada unidad con
 Para clonar este repositorio en tu máquina local, utiliza el siguiente comando:
 
 ```bash
-git clone https://github.com/AlejandraTach/vueling-university.git
+git clone https://github.com/AlejandraTech/vueling-university
 ```
 
 ## 💻 Comandos Git Útiles
