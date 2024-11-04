@@ -10,6 +10,7 @@
 | [🧹 Código Limpio](#4-código-limpio)                                               | Principios y prácticas para mantener el código comprensible y libre de elementos innecesarios.      |
 | [📐 Domain-Driven Design (DDD)](#5-domain-driven-design-ddd)                       | Conceptos clave de DDD para diseñar el software basado en el dominio del negocio.                    |
 | [📚 Patrones de Diseño de GoF](#6-patrones-de-diseño-de-gof)                      | Patrones clásicos de diseño para resolver problemas comunes de desarrollo de software.               |
+| [📂 Estructura de Carpetas](#7-estructura-de-carpetas)                             | Organización de carpetas en proyectos de consola para facilitar el mantenimiento y la escalabilidad. |
 
 ---
 
@@ -196,3 +197,135 @@ public class Singleton
 
 > [!CAUTION]  
 > Seleccionar patrones de diseño sin un análisis cuidadoso puede llevar a una sobrecarga innecesaria, aumentando la complejidad del sistema.
+
+## **7. 📂 Estructura de Carpetas**
+
+```
+NombreProyecto
+│
+├── Presentation
+│   └── NombreProyecto.Presentation.ConsoleUI
+│       ├── Program.cs                 // Configuración inicial
+│       └── MainMenu.cs                // Interacción con el usuario y consultas
+│
+├── Business
+│   ├── NombreProyecto.Business.Contracts
+│   │   ├── DTOs
+│   │   │   └── NombreBDto.cs          // Definición de DTOs
+│   │   └── INombreAService.cs         // Definición de interfaces
+│   │
+│   └── NombreProyecto.Business.Impl
+│       └── NombreAService.cs          // Implementación de servicios de negocio
+│
+├── Domain
+│   └── NombreProyecto.Domain.Models
+│       ├── NombreAModel.cs            // Modelos de dominio
+│       └── NombreBModel.cs            // Modelos de dominio
+│
+├── Infrastructure
+│   ├── NombreProyecto.Infrastructure.Contracts
+│   │   ├── Entities
+│   │   │   ├── NombreAEntity.cs       // Entidades de la base de datos
+│   │   │   └── NombreBEntity.cs       // Entidades de la base de datos
+│   │   └── INombreARepository.cs      // Interfaces de repositorios
+│   │
+│   └── NombreProyecto.Infrastructure.Impl
+│       ├── NombreARepository.cs       // Implementación de repositorios
+│       └── NombreBRepository.cs       // Implementación de repositorios
+│
+├── XCutting
+│   └── NombreProyecto.XCutting.Enums
+│       └── NombreCErrorEnum.cs        // Definición de enumeraciones y elementos comunes
+│
+└── Test
+    └── NombreProyecto.Domain.Models.UnitTests
+        └── Tests.cs                   // Pruebas unitarias de los modelos de dominio
+```
+
+Para organizar un proyecto de consola en C#, es ideal estructurarlo en capas. A continuación se describen las carpetas y su propósito:
+
+### **1. Presentation** 
+Contiene la interfaz de usuario, usualmente en `ConsoleUI`.
+
+- **NombreProyecto.Presentation.ConsoleUI**  
+  - **Program.cs**: Configuración inicial.
+  - **MainMenu.cs**: Gestiona la interacción del usuario y delega las consultas a las capas correspondientes.
+
+### **2. Business**
+Contiene la lógica de negocio y coordina el flujo de datos entre capas.
+
+- **NombreProyecto.Business.Contracts**
+  - **DTOs**: Define los DTOs (Data Transfer Objects) usados en la aplicación, como `NombreBDto.cs`.
+  - **Interfaces**: Define interfaces como `INombreAService.cs`.
+  
+- **NombreProyecto.Business.Impl**
+  - **Servicios**: Implementación de servicios de negocio, como `NombreAService.cs`.
+
+### **3. Domain**
+Define las entidades y maneja las reglas de negocio sin depender de otras capas.
+
+- **NombreProyecto.Domain.Models**
+  - **Entidades de Dominio**: Define modelos como `NombreAModel.cs` y `NombreBModel.cs` con comportamiento propio, getters y setters.
+
+### **4. Infrastructure**
+Encargada de la persistencia y acceso a la base de datos.
+
+- **NombreProyecto.Infrastructure.Contracts**
+  - **Entities**: Define entidades para el mapeo a la base de datos, como `NombreAEntity.cs`.
+  - **Repositorios**: Define interfaces para repositorios, como `INombreARepository.cs`.
+  
+- **NombreProyecto.Infrastructure.Impl**
+  - **Implementación de Repositorios**: Contiene implementaciones como `NombreARepository.cs`.
+
+### **5. XCutting**
+Proyecto para elementos comunes que interactúan con varias capas, como `enums` o excepciones personalizadas.
+
+- **NombreProyecto.XCutting.Enums**  
+  - Define enumeraciones como `NombreCErrorEnum`.
+
+---
+
+### **Notas y Buenas Prácticas de Implementación**
+
+> [!NOTE]  
+> Los contratos no deben depender de proyectos específicos; solo deben definir signaturas de funciones sin la implementación.
+
+> [!IMPORTANT]  
+> La capa de dominio debe ser independiente y capaz de instanciarse sin inyecciones externas; sus métodos y parámetros definen claramente su funcionamiento.
+
+> [!CAUTION]  
+> Antes de acceder a la base de datos, realiza validaciones en los modelos de dominio y asegúrate de mapear entidades según sea necesario.
+
+> [!WARNING]  
+> Solo la capa de negocio debe conectarse al repositorio para manipular la base de datos, evitando acoplamientos innecesarios.
+
+#### **Ejemplo de Código**:
+```csharp
+List<MovementEntity> movementsEntityList = _movementsRepository?.GetMovements()!;
+```
+
+> [!TIP]
+> Usa `!` para indicar que esperas que el valor no sea nulo en casos específicos, lo que puede mejorar la claridad en ciertos contextos.
+
+> [!CAUTION]
+> Los métodos que reciben parámetros de entrada deben pasar primero por el modelo de dominio antes de interactuar con las entidades. Los métodos sin parámetros pueden llamar directamente a las entidades.
+
+> [!TIP]
+> Usa expresiones lambda para mapear y filtrar resultados de manera eficiente:
+```csharp
+var movements = movementsEntityList.Select(x => new MovementDto { value = x.value, timestamp = x.timestamp }).ToList();
+var totalMoney = movementsEntityList.Sum(x => x.value);
+```
+
+> [!NOTE]  
+> Cada `entity` representa una tabla en la base de datos y define sus campos.
+
+> [!CAUTION]
+> Asegúrate de organizar las validaciones en clases adecuadas dentro de la capa de dominio para mantener el código limpio y cohesivo.
+
+#### **Ejemplo de Propiedades en Modelos**:
+```csharp
+public string? Number { get; set; }
+public decimal Money { get; set; }
+public List<MovementModel>? Movements { get; set; }
+```
