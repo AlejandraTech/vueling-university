@@ -22,13 +22,15 @@ El flujo de desarrollo clásico implica una serie de pasos secuenciales para cre
 
 1. **Entender la tarea a resolver**: Antes de escribir código, es fundamental entender completamente los requisitos del problema o la tarea que se va a resolver.
 
-   > 💡 **Ejemplo**: Si te piden escribir un programa que calcule la media de una lista de números, debes asegurarte de comprender si los números pueden ser decimales, enteros, si habrá una cantidad mínima o máxima, etc.
+> [!TIP]  
+> **Ejemplo**: Si te piden escribir un programa que calcule la media de una lista de números, asegúrate de comprender si los números pueden ser decimales, enteros, si habrá una cantidad mínima o máxima, etc.
 
 2. **Resolver dudas**: Asegúrate de aclarar cualquier confusión antes de comenzar a programar, haciendo preguntas relevantes.
 
 3. **Seleccionar un Lenguaje de Alto Nivel (HLL)**: Elegir el lenguaje que mejor se ajuste a las necesidades del proyecto.
 
-   > **Ejemplos de HLL**: C#, Java, Python.
+> [!NOTE]  
+> **Ejemplos de HLL**: C#, Java, Python.
 
 4. **Escribir el código en HLL**: Utilizar un editor de código o un IDE para escribir el programa en el HLL seleccionado.
 
@@ -37,6 +39,9 @@ El flujo de desarrollo clásico implica una serie de pasos secuenciales para cre
 6. **Ejecutar el código MLL**: Una vez compilado, el código se ejecuta en la máquina para observar si el programa funciona correctamente.
 
 7. **Probar y depurar**: Ejecutar pruebas para verificar que el programa cumple con los requisitos originales. Si hay errores, corregirlos y repetir este paso hasta que el programa sea funcional.
+
+> [!IMPORTANT]  
+> Asegúrate de seguir los pasos de depuración minuciosamente, ya que detectar errores en esta etapa puede evitar problemas mayores en el futuro.
 
 ---
 
@@ -48,9 +53,8 @@ Este tipo de compilación permite que un programa esté compuesto por partes esc
 1. **Compilación HLL a IL**: Los diferentes lenguajes se compilan a un Lenguaje Intermedio común, por ejemplo, el **CIL (Common Intermediate Language)**.
 2. **Compilación IL a MLL**: Finalmente, el IL se traduce al código de máquina específico para ser ejecutado en un procesador.
 
-> 💡 **Beneficios**:
-> - Permite usar diferentes lenguajes de programación en un solo proyecto.
-> - El proyecto funcionará como si todo el código hubiera sido escrito en un solo lenguaje.
+> [!NOTE]  
+> Este proceso permite un entorno de trabajo más flexible al usar múltiples lenguajes en el mismo proyecto.
 
 ---
 
@@ -61,7 +65,8 @@ Esta variante permite que el mismo código pueda ser ejecutado en diferentes sis
 ### Proceso:
 - **Compiladores específicos para cada plataforma**: Después de compilar a IL, existen compiladores que traducen ese IL en códigos de máquina específicos para cada plataforma, como Windows, Linux, Android, etc.
 
-> ⚠️ **Ejemplo**: Un programa escrito en C# puede ejecutarse tanto en Windows como en Linux gracias a la compilación multiplataforma de .NET, manteniendo el mismo comportamiento en ambas plataformas.
+> [!WARNING]  
+> Asegúrate de probar el código en cada plataforma objetivo, ya que pequeños detalles pueden variar y afectar el comportamiento del programa.
 
 ---
 
@@ -74,7 +79,8 @@ El **código gestionado** se ejecuta dentro de una máquina virtual (VM) que ges
 2. **Excepciones**: Si una instrucción podría causar un error de ejecución, la VM levanta una excepción antes de ejecutar el código.
 3. **Recolección de basura**: La VM también se encarga de liberar memoria utilizada por variables que ya no se están usando (Garbage Collection).
 
-> 💡 **Ejemplo**: En .NET, el **CLR (Common Language Runtime)** es la VM que gestiona la ejecución del código escrito en C# y otros lenguajes soportados por .NET.
+> [!CAUTION]  
+> En proyectos grandes, la dependencia de la VM puede influir en el rendimiento, ya que las VMs pueden ser menos eficientes que el código compilado directamente.
 
 ---
 
@@ -84,11 +90,12 @@ El **código gestionado** se ejecuta dentro de una máquina virtual (VM) que ges
 
 | **Componentes Principales** |
 |----------------------------|
-| **Compilación Multilenguaje**: .NET permite escribir código en varios lenguajes como C#, F#, VB.Net, que se compilan al CIL común. |
-| **Biblioteca Base (BCL)**: Proporciona clases y métodos predefinidos que ayudan a los desarrolladores a crear software sin necesidad de reinventar soluciones comunes. |
-| **Herramienta de Gestión de Paquetes (NuGet)**: Permite descargar bibliotecas de terceros para añadir funcionalidades a las aplicaciones. |
+| **Compilación Multilenguaje** → .NET permite escribir código en varios lenguajes como C#, F#, VB.Net, que se compilan al CIL común. |
+| **Biblioteca Base (BCL)** → Proporciona clases y métodos predefinidos que ayudan a los desarrolladores a crear software sin necesidad de reinventar soluciones comunes. |
+| **Herramienta de Gestión de Paquetes (NuGet)** → Permite descargar bibliotecas de terceros para añadir funcionalidades a las aplicaciones. |
 
-> 💡 **Ejemplo**: Un proyecto en C# puede usar bibliotecas de NuGet como `Newtonsoft.Json` para manipular datos JSON de manera sencilla.
+> [!TIP]  
+> Usa paquetes de NuGet para añadir funcionalidades específicas a tu aplicación en lugar de desarrollar todo desde cero.
 
 ---
 
@@ -103,6 +110,9 @@ Las herramientas de desarrollo de software se pueden clasificar en varias catego
 | **SDK (Kit de Desarrollo de Software)**  | Un IDE que incluye además librerías predefinidas listas para usar. Ejemplo: SDK de .NET.                    |
 | **Framework**                     | Un SDK que incluye una máquina virtual para ejecutar código gestionado. Ejemplo: .NET o Java.                |
 
+> [!NOTE]  
+> La elección de herramientas dependerá del tipo de proyecto y las necesidades del equipo de desarrollo.
+
 ---
 
 ## 7. 🛠️ **Visual Studio 2022**
@@ -114,6 +124,9 @@ Las herramientas de desarrollo de software se pueden clasificar en varias catego
 - Gestión de dependencias a través de NuGet.
 - Herramientas de depuración avanzadas y soporte para control de versiones (Git).
 
+> [!IMPORTANT]  
+> Visual Studio facilita el trabajo en equipo, especialmente cuando se combina con GitHub para el control de versiones.
+
 ---
 
 ## 8. 🖥️ **Proyecto de Consola .NET 6 en VS2022**
@@ -122,7 +135,12 @@ Pasos básicos para crear un proyecto de consola en **.NET 6** usando Visual Stu
 
 1. Abrir Visual Studio y crear una solución usando la plantilla **Solución Vacía**.
 2. Agregar un proyecto de consola dentro de la solución.
-3. Seleccionar la versión **.NET 6** y agregar dependencias según sea necesario.
+3. Seleccionar la versión **.NET 6** y agregar dependencias según
+
+ sea necesario.
+
+> [!TIP]  
+> Usar soluciones vacías permite una organización más clara y modular de tus proyectos.
 
 ---
 
@@ -140,10 +158,12 @@ Pasos básicos para crear un proyecto de consola en **.NET 6** usando Visual Stu
 2. Crear un nuevo repositorio Git y asociarlo al proyecto local en Visual Studio.
 3. Administrar ramas y realizar commits, push y pull directamente desde el IDE.
 
+> [!WARNING]  
+> Realiza commits regularmente para evitar perder avances significativos en caso de errores.
+
 ---
 
 ### 📚 **Referencias**
 - [Documentación oficial de .NET](https://learn.microsoft.com/en-us/dotnet/)
 - [Documentación oficial de C#](https://learn.microsoft.com/en-us/dotnet/csharp/)
 - [Try .NET online](https://dotnetfiddle.net/)
-
