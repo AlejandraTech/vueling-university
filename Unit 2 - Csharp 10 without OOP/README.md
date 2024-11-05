@@ -23,6 +23,7 @@ Cada nueva versión de C# introduce nuevas funcionalidades que pueden ser aprove
 
    - **Ejemplo**: Si el proyecto está configurado para usar **.NET 6**, el compilador utilizará **C# 10** de forma predeterminada.
 
+> [!TIP]
 > 💡 **Más detalles** sobre las versiones de C# pueden encontrarse en la [documentación de versionado del lenguaje C#](https://learn.microsoft.com/en-us/dotnet/csharp/language-reference/language-versioning).
 
 ---
@@ -106,6 +107,7 @@ string saludo = "¡Hola!";
 DateTime hoy = DateTime.Now;
 ```
 
+> [!NOTE] 
 > 🔗 **Más información sobre tipos primitivos en**: 
 > - [bool](https://learn.microsoft.com/en-us/dotnet/api/system.boolean?view=net-6.0)
 > - [int](https://learn.microsoft.com/en-us/dotnet/api/system.int32?view=net-6.0)
@@ -141,6 +143,7 @@ Dictionary<int, string> students = new Dictionary<int, string> {
 };
 ```
 
+> [!NOTE]
 > 🔗 **Más información en**: [System.Collections.Generic](https://learn.microsoft.com/en-us/dotnet/api/system.collections.generic?view=net-6.0)
 
 ---
@@ -259,4 +262,41 @@ C# 10 incluye mejoras y nuevas características que facilitan la programación.
 - **Espacios de nombres por archivo**: Simplifican la declaración de espacios de nombres.
 - **Estructuras de registro**: Mejoran la creación de estructuras inmutables.
 
+> [!NOTE]
 > 🔗 **Consulta más detalles en**: [What's new in C# 10](https://learn.microsoft.com/en-us/dotnet/csharp/whats-new/csharp-10)
+
+---
+
+## 📚 **Referencias**
+
+1. **Documentación de C#**
+   - [C# Guide](https://learn.microsoft.com/en-us/dotnet/csharp/)
+   - [C# Language Reference](https://learn.microsoft.com/en-us/dotnet/csharp/language-reference/)
+   
+2. **Novedades de C#**
+   - [What's New in C# 10](https://learn.microsoft.com/en-us/dotnet/csharp/whats-new/csharp-10)
+   
+3. **Depuración en Visual Studio**
+   - [Debugging in Visual Studio](https://learn.microsoft.com/en-us/visualstudio/debugger/debugging-in-visual-studio?view=vs-2022)
+
+4. **Control de Flujo**
+   - [Control Flow in C#](https://learn.microsoft.com/en-us/dotnet/csharp/programming-guide/flow-control/)
+
+5. **Tipos de Datos**
+   - [C# Primitive Data Types](https://learn.microsoft.com/en-us/dotnet/csharp/programming-guide/inside-a-program/data-types)
+   - [Nullable Types](https://learn.microsoft.com/en-us/dotnet/csharp/programming-guide/nullable-types/)
+
+6. **Colecciones en C#**
+   - [Collections in C#](https://learn.microsoft.com/en-us/dotnet/csharp/programming-guide/collections/)
+   
+7. **Pruebas Unitarias**
+   - [Unit Testing in .NET](https://learn.microsoft.com/en-us/dotnet/core/testing/)
+
+8. **Git y Control de Versiones**
+   - [Git Documentation](https://git-scm.com/doc)
+   - [Getting Started with Git](https://git-scm.com/book/en/v2/Getting-Started-About-Version-Control)
+
+9. **Recursos de Aprendizaje**
+   - [Microsoft Learn - C#](https://learn.microsoft.com/en-us/training/browse/?products=dotnet&languages=csharp)
+   - [Codecademy - Learn C#](https://www.codecademy.com/learn/learn-c-sharp)
+   - [Pluralsight - C# Path](https://www.pluralsight.com/paths/csharp)
