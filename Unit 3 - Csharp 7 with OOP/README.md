@@ -86,7 +86,7 @@ Console.WriteLine($"La velocidad del {miCoche.Marca} {miCoche.Modelo} es {miCoch
 Los diagramas de clases representan visualmente las clases y sus relaciones. Un ejemplo simple sería:
 
 ```
-           **Coche**
+             Coche
 ---------------------------------
 - Marca : string
 - Modelo : string
