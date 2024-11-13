@@ -86,12 +86,12 @@ Console.WriteLine($"La velocidad del {miCoche.Marca} {miCoche.Modelo} es {miCoch
 Los diagramas de clases representan visualmente las clases y sus relaciones. Un ejemplo simple sería:
 
 ```
-Coche
------------
+           **Coche**
+---------------------------------
 - Marca : string
 - Modelo : string
 - Velocidad : int
------------
+---------------------------------
 + Acelerar(int incremento) : void
 ```
 
@@ -229,7 +229,7 @@ Console.WriteLine("Saldo: " + cuenta.ObtenerSaldo());
 ```
 
 ### 3. Abstracción
-Oculta detalles de implementación, mostrando solo características esenciales mediante clases abstractas y métodos abstractos.
+Oculta detalles de implementación, mostrando solo características esenciales mediante clases y métodos abstractos.
 
 ```csharp
 public abstract class Forma
@@ -253,9 +253,7 @@ Console.WriteLine("Área del círculo: " + miCirculo.CalcularArea());
 ```
 
 ### 4. Polimorfismo
-Permite usar objetos de
-
- diferentes clases de manera intercambiable, utilizando una interfaz común o una clase base.
+Permite usar objetos de diferentes clases de manera intercambiable, utilizando una interfaz común o una clase base.
 
 ```csharp
 public class Perro : Animal
